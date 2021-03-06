@@ -1,0 +1,25 @@
+<h1>Ingresar</h1>
+
+<form [formGroup]='formularioDeIngreso'>
+  <div>
+    <label>Email</label>
+    <input type='email' formControlName='email'>
+    <div *ngIf="formularioDeIngreso.get('email').errors && formularioDeIngreso.get('email').dirty">
+      <p *ngIf="formularioDeIngreso.get('email').hasError('required')">El campo es obligatorio</p>
+    </div>
+
+  </div>
+
+  <div>
+    <label>Contraseña</label>
+    <input type='password' formControlName='password'>
+
+    <div *ngIf="formularioDeIngreso.get('password').dirty && formularioDeIngreso.get('password').errors">
+      <p *ngIf="formularioDeIngreso.get('password').hasError('required')">El campo es obligatorio</p>
+      <p *ngIf="formularioDeIngreso.get('password').hasError('minlength')">La contraseña debe tener al menos 6 caracteres</p>
+      <p *ngIf="formularioDeIngreso.get('password').hasError('maxlength')">La contraseña debe tener como máximo 10 caracteres</p>
+    </div>
+  </div>
+
+  <input type='submit' value='Ingresar'>
+</form>
