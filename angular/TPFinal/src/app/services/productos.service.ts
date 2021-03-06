@@ -10,11 +10,10 @@ export class ProductosService {
   constructor(private http:HttpClient) { }
 
   getProductos(){
-  return this.http.get("https://jsonfy.com/items")
+    return this.http.get("https://jsonfy.com/items")
   }
 
   getProducto(id){
-  return this.http.get("https://jsonfy.com/items"+id).toPromise()
+    return this.http.get("https://jsonfy.com/items/"+id).toPromise()
   }
-
 }
