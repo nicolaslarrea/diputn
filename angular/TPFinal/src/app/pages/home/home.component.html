@@ -1,1 +1,9 @@
-<p>home works!</p>
+<h1>Listado de Productos</h1>
+
+<div>
+  <div *ngFor="let producto of productos">
+    <p>{{producto.name}}</p>
+    <p>{{producto.price}}</p>
+    <button routerLink="productos/{{producto.id}}">Ver Detalle</button>
+  </div>
+</div>
