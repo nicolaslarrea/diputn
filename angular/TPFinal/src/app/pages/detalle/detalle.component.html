@@ -1,3 +1,9 @@
 <h1>Detalle del producto</h1>
-<p>{{producto[0].name}}</p>
-<p>{{producto[0].price}}</p>
+<div *ngIf="loading">
+  Cargando...
+</div>
+
+<div *ngIf="!loading">
+  <p>{{ producto[0].name }}</p>
+  <p>{{ producto[0].price }}</p>
+</div>

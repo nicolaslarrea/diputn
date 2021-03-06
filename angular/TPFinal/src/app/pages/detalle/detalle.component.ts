@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class DetalleComponent implements OnInit {
   producto;
+  loading=true;
 
   constructor(
     private productosSrv:ProductosService,
@@ -20,6 +21,7 @@ export class DetalleComponent implements OnInit {
     try {
       const id = this.activatedRoute.snapshot.paramMap.get("id")
       this.producto = await this.productosSrv.getProducto(id)
+      this.loading=false;
     } catch(e) {
 
     } 

@@ -8,11 +8,13 @@ import { ProductosService } from '../../services/productos.service';
 })
 export class HomeComponent implements OnInit {
   productos:any = []
+  loading=true;
 
   constructor(private productosSrv:ProductosService) {
     this.productosSrv.getProductos()
     .subscribe(data=>{
-      this.productos=data 
+      this.productos=data;
+      this.loading=false;
     })
   }
 

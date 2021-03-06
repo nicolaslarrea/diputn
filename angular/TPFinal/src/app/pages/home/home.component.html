@@ -1,6 +1,10 @@
 <h1>Listado de Productos</h1>
 
-<div>
+<div *ngIf="loading">
+  Cargando...
+</div>
+
+<div *ngIf="!loading">
   <div *ngFor="let producto of productos">
     <p>{{producto.name}}</p>
     <p>{{producto.price}}</p>
