@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h1>Formulario</h1>
+    <h2>Completar formulario</h2>
+    <form>
+      <div>
+        <label>Nombre</label>
+        <input type="text" name="nombre" id="nombre" />
+      </div>
+      <div>
+        <label>Curso</label>
+        <select name="curso" id="curso" onchange="mostrarTelefono()">
+          <option value="1234-5678">Curso React</option>
+          <option value="9101-1121">Curso Angular</option>
+          <option value="3141-5161">Curso Node</option>
+        </select>
+      </div>
+    </form>
+    <div id="telefono"></div>
+    <button onclick="mostrarPopup()">Mostrar popup</button>
+    <button onclick="cambiarColor()">Cambiar color</button>  
+  </div>
+</body>
+</html>
+
+<script src="./index.js"></script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1>Formulario</h1>
+      <h2>Completar formulario</h2>
+      <form>
+        <div>
+          <label>Nombre</label>
+          <input type="text" name="nombre" id="nombre" />
+        </div>
+        <div>
+          <label>Apellido</label>
+          <input type="text" name="apellido" id="apellido" />
+        </div>
+        <div>
+          <label>Dni</label>
+          <input type="text" name="dni" id="dni" />
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <div>
+          <label>Teléfono</label>
+          <input type="text" name="telefono" id="telefono" />
+        </div>
+        <div>
+          <label>Tipo de seguro</label>
+          <select name="seguro" id="seguro" onchange="mostrarValor()">
+            <option value="500">Básico</option>
+            <option value="1000">Intermedio</option>
+            <option value="1500">Premium</option>
+          </select>
+        </div>
+      </form>
+      <div id="valor"></div>
+    </div>
+  </body>
+</html>
+
+<script src="./index.js"></script>
