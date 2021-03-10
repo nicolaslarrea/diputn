@@ -1,0 +1,13 @@
+body {
+  background-color: #e7f4ec;
+}
+#bloque_contenedor {
+  background-color: white;
+  margin: auto;
+  width: 30%;
+  padding: 10px;
+}
+
+#resultado {
+  font-size: 24px;
+}

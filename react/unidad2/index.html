@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="bloque_contenedor">
+      <h2>Calculadora</h2>
+        <div>
+          <label>Primer Valor</label>
+          <input type="number" id="valor1" />
+        </div>
+        <div>
+          <label>Segundo Valor</label>
+          <input type="number" id="valor2" />
+        </div>
+        <div>
+          <label>Suma</label>
+          <button name="suma" onclick= "sumar()">+</button>
+        </div>
+        <div>
+          <label>Resta</label>
+          <button name="resta" onclick= "restar()">-</button>
+        </div>
+        <div>
+          <label>Multiplicación</label>
+          <button name="multiplicacion" onclick= "multiplicar()">*</button>
+        </div>
+        <div>
+          <label>Dividir</label>
+          <button name="divicion" onclick= "dividir()">/</button>
+        </div>
+      <div id="resultado"></div>
+    </div>
+  </body>
+</html>
+
+<script src="./index.js"></script>
