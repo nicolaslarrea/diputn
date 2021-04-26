@@ -12,13 +12,14 @@ module.exports = {
   },
   create:async function(req, res, next) {
     console.log(req.body)
-    console.log(req.body.name)
+    console.log(req.body.nombre)
 
     const document = new productsModel({
-      name:req.body.name,
-      sku:req.body.sku,
-      description:req.body.description,
-      price:req.body.price
+      nombre:req.body.nombre,
+      precio:req.body.precio,
+      codigo:req.body.codigo,
+      descripcion:req.body.descripcion,
+      categoria:req.body.categoria
     })
 
     const response = await document.save()
