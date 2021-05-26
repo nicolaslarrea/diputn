@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import firebase from "../Config/firebase.js"
 
 function RegistroPage() {
 
@@ -6,9 +7,20 @@ function RegistroPage() {
   
   const handleSubmit = (event)=> {
     event.preventDefault()
-    //Acá manejaría el envío del formulario.
-    console.log(form)
+
+    firebase.auth.createUserWithEmailAndPassword(form.email, form.password)
+    .then(data=>{
+      firebase.db.collection("usuarios").add({
+        nombre: form.nombre,
+        apellido: form.apellido,
+        email: form.email,
+        userId: data.user.uid
+      })
+      .then(data=> { console.log(data)})
+    })
+    .catch(error=>{console.log("Error:", error)})
   }
+
   const handleChange = (event)=>{
     const name = event.target.name
     const value = event.target.value

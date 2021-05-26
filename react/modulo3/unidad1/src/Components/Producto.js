@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
 function Producto(props) {
-  const { data } = props
-  const { id, price, name } = props.data
+  const { data, id } = props
+  const { price, name } = props.data
   
   const mostrarDetalle = (props.mostrarDetalle !== true ? false : true)
   
