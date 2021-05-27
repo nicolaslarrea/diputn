@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import firebase from "../Config/firebase"
 
-import { getProductos } from "../Services/ItemsServices"
 import Producto from "../Components/Producto"
 
 function HomePage() {
@@ -32,7 +31,7 @@ function HomePage() {
   } else {
     return(
       <div>
-        { productos.map((producto)=> <Producto id={ producto.id } data={ producto.data() } mostrarDetalle={ true }/>) }
+        { productos.map((producto)=> <Producto key={ producto.id } id={ producto.id } data={ producto.data() } mostrarDetalle={ true }/>) }
       </div>
     )
   }

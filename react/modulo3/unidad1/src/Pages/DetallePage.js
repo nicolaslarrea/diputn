@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react"
 import firebase from "../Config/firebase"
 
-import { getProducto } from "../Services/ItemsServices"
-
 import Producto from "../Components/Producto"
 
 function DetallePage(props) {
@@ -101,9 +99,7 @@ function DetallePage(props) {
             <input type="text" name="price" value={ formAdd.price } onChange={ handleChangeAdd }></input>
           </div>
           <button type="submit">Crear Producto</button>
-
         </form>
-         
       </div>
     )
   }

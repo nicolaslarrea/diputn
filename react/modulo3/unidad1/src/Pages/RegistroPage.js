@@ -1,24 +1,37 @@
 import React, { useState } from "react"
 import firebase from "../Config/firebase.js"
 
+import ButtonWithLoading from '../Components/Forms/ButtonWithLoading'
+import AlertCustom from '../Components/AlertCustom'
+import FormGroup from '../Components/Forms/FormGroup'
+
 function RegistroPage() {
 
-  const [ form, setForm] = useState({ nombre:'', apellido:'', email:'', password:''})
-  
+  const [ form, setForm ] = useState({ nombre:'', apellido:'', email:'', password:''})
+  const [ loading, setLoading ] = useState(false)
+  const [ alert, setAlert ] = useState({ variant:'', text:'' }) 
+
   const handleSubmit = (event)=> {
     event.preventDefault()
+    setLoading(true)
 
     firebase.auth.createUserWithEmailAndPassword(form.email, form.password)
     .then(data=>{
-      firebase.db.collection("usuarios").add({
+      firebase.db.collection('usuarios').add({
         nombre: form.nombre,
         apellido: form.apellido,
         email: form.email,
         userId: data.user.uid
       })
-      .then(data=> { console.log(data)})
+      .then(data=> {
+        setLoading(false)
+        setAlert({ variant:'success', text:'Registro Exitoso' })
+      })
     })
-    .catch(error=>{console.log("Error:", error)})
+    .catch(error=> {
+      setLoading(false)
+      setAlert({ variant:'danger', text:'Algo salió mal' })
+    })
   }
 
   const handleChange = (event)=>{
@@ -28,26 +41,18 @@ function RegistroPage() {
   }
   
   return(
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Nombre</label>
-        <input type="text" name="nombre" value={ form.nombre } onChange={ handleChange }></input>
-      </div>
-      <div>
-        <label>Apellido</label>
-        <input type="text" name="apellido" value={ form.apellido } onChange={ handleChange }></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input type="email" name="email" value={ form.email } onChange={ handleChange }></input>
-      </div>
-      <div>
-        <label>Contraseña</label>
-        <input type="password" name="password" value={ form.password } onChange={ handleChange }></input>
-      </div>
+    <>
+      <form onSubmit={ handleSubmit }>
+        <FormGroup name="nombre" label="Nombre" type="text" placeholder="Ingrese su nombre" value={ form.nombre } onChange={ handleChange }></FormGroup>
+        <FormGroup name="apellido" label="Apellido" type="text" placeholder="Ingrese su apellido" value={ form.apellido } onChange={ handleChange }></FormGroup>
+        <FormGroup name="email" label="Email" type="email" placeholder="Ingrese su email" value={ form.email } onChange={ handleChange }></FormGroup>
+        <FormGroup name="password" label="Password" type="password" placeholder="Ingrese su contraseña" value={ form.password } onChange={ handleChange }></FormGroup>
 
-      <button type="submit">Registrarse</button>
-    </form>
+        <ButtonWithLoading  loading={ loading }>Registrarse</ButtonWithLoading>
+      </form>
+
+      <AlertCustom variant={ alert.variant } text={ alert.text } /> 
+    </>
   )
 }
 
