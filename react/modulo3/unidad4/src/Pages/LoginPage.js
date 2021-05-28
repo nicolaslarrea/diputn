@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react"
 import firebase from "../Config/firebase.js"
 import { useHistory } from "react-router-dom"
-import { Container } from 'react-bootstrap'
 
 import Context from '../Context/Context'
 
 import ButtonWithLoading from '../Components/Forms/ButtonWithLoading'
+import FormGroup from '../Components/Forms/FormGroup'
 
 function LoginPage(){
   const [ form, setForm ] = useState({ email:'', password:'' })
@@ -38,20 +38,11 @@ function LoginPage(){
   }
   
   return(
-    <Container>
       <form onSubmit={ handleSubmit }>
-        <div>
-          <label>Email</label>
-          <input type="email" name="email" value={ form.email } onChange={ handleChange }></input>
-        </div>
-        <div>
-          <label>Contraseña</label>
-          <input type="password" name="password" value={ form.password } onChange={ handleChange }></input>
-        </div>
-
+        <FormGroup name="email" label="Email" type="email" placeholder="Ingrese su Email" value={ form.email } onChange={ handleChange }></FormGroup>
+        <FormGroup name="password" label="Password" type="password" placeholder="Ingrese su contraseña" value={ form.password } onChange={ handleChange }></FormGroup>
         <ButtonWithLoading  loading={ loading }>Ingresar</ButtonWithLoading>
       </form>
-    </Container>
   )
 }
 

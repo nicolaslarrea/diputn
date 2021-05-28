@@ -5,7 +5,7 @@ import { Button, Card }from 'react-bootstrap'
 import Context from '../Context/Context'
 
 function Producto(props) {
-  const { data, id } = props
+  const { id } = props
   const { price, name, sku, description } = props.data
 
   const styles = {
