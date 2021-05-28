@@ -1,7 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import firebase from "../Config/firebase.js"
 import { useHistory } from "react-router-dom"
 import { Container } from 'react-bootstrap'
+
+import Context from '../Context/Context'
 
 import ButtonWithLoading from '../Components/Forms/ButtonWithLoading'
 
@@ -10,6 +12,8 @@ function LoginPage(){
   const [ loading, setLoading ] = useState(false)
 
   const history = useHistory()
+  //TODO, cambiar el nombre de Context porque quedó super confuso.
+  const context = useContext(Context)
 
   const handleSubmit = (event)=>{
     event.preventDefault()
@@ -18,6 +22,7 @@ function LoginPage(){
     .then(data=>{
       console.log("Login Ok", data)
       setLoading(false)
+      context.loginUser()
       history.push("/")
     })
 

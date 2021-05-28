@@ -7,13 +7,11 @@ function HomePage() {
   const [ productos, setProductos ] = useState([])
   const [ loading, setLoading ] = useState(true)
 
-  //#TODO ver bien porque este es un componentDidMount.
   useEffect(
     ()=>{
       firebase.db.collection("productos")
       .get()
       .then(querySnapshot=> {
-        console.log(querySnapshot.docs)
         setProductos(querySnapshot.docs)
         setLoading(false)
       })
@@ -31,7 +29,7 @@ function HomePage() {
   } else {
     return(
       <div>
-        { productos.map((producto)=> <Producto key={ producto.id } id={ producto.id } data={ producto.data() } mostrarDetalle={ true }/>) }
+        { productos.map((producto)=> <Producto key={ producto.id } id={ producto.id } data={ producto.data() }/>) }
       </div>
     )
   }
